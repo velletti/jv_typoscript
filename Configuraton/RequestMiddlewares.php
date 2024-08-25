@@ -1,13 +1,15 @@
 <?php
-
-use JVelletti\JvTemplate\Middleware\Template;
+use JVelletti\JvTyposcript\Middleware\Typoscript ;
 return [
     'frontend' => [
-        'jvelletti/jvtemplate/template' => [
-            'target' => Template::class,
+        'jvelletti/jv-typoscript/typoscript' => [
+            'target' => Typoscript::class,
             'after' => [
-                'typo3/cms-frontend/content-length-headers'
+                'typo3/cms-frontend/prepare-tsfe-rendering'
             ],
+            'before' => [
+                'typo3/cms-frontend/content-length-headers'
+            ]
         ],
     ],
 ];

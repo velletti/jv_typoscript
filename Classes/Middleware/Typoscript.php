@@ -1,7 +1,6 @@
 <?php
 
 namespace JVelletti\JvTyposcript\Middleware;
-
 use JVelletti\JvTyposcript\Utility\EmConfigurationUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,8 +13,8 @@ use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class Ajax
- * @package JVelletti\JvEvents\Middleware
+ * Class Typoscript
+ * @package JVelletti\JvTyposcript\Middleware
  */
 class Typoscript implements MiddlewareInterface
 {
@@ -32,7 +31,8 @@ class Typoscript implements MiddlewareInterface
     {
 
         $_gp = $request->getQueryParams();
-
+        var_dump($_gp);
+        die;
         if( is_array($_gp) && key_exists("tx_jvtyposcript" ,$_gp ) ) {
             $this->getTypoScript($request , $_gp['tx_jvtyposcript']) ;
         }
