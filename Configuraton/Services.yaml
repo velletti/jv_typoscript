@@ -4,5 +4,5 @@ services:
     autoconfigure: true
     public: false
 
-  JVelletti\JvTyposcript\:
+  Jvelletti\JvTyposcript\:
     resource: '../Classes/*'

@@ -24,7 +24,7 @@
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
-            "JVelletti\\JvTyposcript\\": "Classes"
+            "Jvelletti\\JvTyposcript\\": "Classes"
         }
     },
     "extra": {

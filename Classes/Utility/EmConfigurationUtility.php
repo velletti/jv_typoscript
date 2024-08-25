@@ -1,6 +1,6 @@
 <?php
 
-namespace JVelletti\JvTyposcript\Utility ;
+namespace Jvelletti\JvTyposcript\Utility ;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -36,33 +36,10 @@ class EmConfigurationUtility
      */
     public static function getEmConf($asObject=false)
     {
-        $settings = GeneralUtility::makeInstance(ExtensionConfiguration::class) ->get('jv_events');
-
-
+        $settings = GeneralUtility::makeInstance(ExtensionConfiguration::class) ->get('jv_typoscript');
         if (!is_array($settings)) {
 			$settings = [];
 		}
-		if( isset( $settings['fontFamily']) ) {
-			$settings['fontFamily'] = str_replace("'" , "" , $settings['fontFamily'] ) ;
-			$settings['fontFamily'] = str_replace('"' , "" , $settings['fontFamily'] ) ;
-			$settings['fontFamily'] = str_replace(' ' , "" , $settings['fontFamily'] ) ;
-		}
-		if ( $asObject ) {
-			$settingsObj = new \stdClass() ;
-			foreach ($settings as $key => $value ) {
-				$settingsObj->$key = $value ;
-			}
-			return $settingsObj ;
-		}
 		return $settings;
     }
-
-	public static function getGoogleApiKey() {
-		$configuration = self::getEmConf();
-        if( Environment::getContext()->isDevelopment() ) {
-            return trim( $configuration['googleApiKeyDEV'] );
-        }
-		return trim($configuration['googleApiKey'] );
-	}
-
 }
