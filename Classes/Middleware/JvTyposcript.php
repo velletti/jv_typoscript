@@ -17,7 +17,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * Class Typoscript
  * @package JVelletti\JvTyposcript\Middleware
  */
-class Typoscript implements MiddlewareInterface
+class JvTyposcript implements MiddlewareInterface
 {
     /**
      * @param ServerRequestInterface $request
