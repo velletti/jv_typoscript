@@ -1,7 +1,7 @@
 {
     "name": "jvelletti/jv-typoscript",
     "type": "typo3-cms-extension",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Get Typscript from GIVEN Frontend request and answer as JSON. usefull in a cli command controller",
 
     "keywords": [

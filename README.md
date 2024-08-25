@@ -17,11 +17,11 @@ create Tag "x.y.z" \
 git push --tags
 
 create new zip file: \
-cd vendor/jvelletti/jve-upgradewizard \
-git archive -o "jve_upgradewizard_x.y.z.zip" HEAD
+cd vendor/jvelletti/jve-template \
+git archive -o "jve_template_x.y.z.zip" HEAD
 
 f.e.: \
-git archive -o "jve_upgradewizard_12.4.11.zip" HEAD
+git archive -o "jve_template_12.4.11.zip" HEAD
 
 
 Upload ZIP File to https://extensions.typo3.org/my-extensions \
@@ -35,5 +35,5 @@ https://packagist.org/profile/
 
 check: \
 https://intercept.typo3.com/admin/docs/deployments \
-https://packagist.org/packages/jvelletti/jve_upgradewizard \
-https://extensions.typo3.org/extension/jve_upgradewizard/ 
+https://packagist.org/packages/jvelletti/jv-template \
+https://extensions.typo3.org/extension/jv_template/ 
