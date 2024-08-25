@@ -1,0 +1,34 @@
+{
+    "name": "jvelletti/jv-typoscript",
+    "type": "typo3-cms-extension",
+    "version": "0.0.1",
+    "description": "Get Typscript from GIVEN Frontend request and answer as JSON. usefull in a cli command controller",
+
+    "keywords": [
+        "typoscript",
+        "LTS12",
+        "extendedTemplateService",
+        "TYPO3"
+    ],
+    "authors": [
+        {
+            "name": "Joerg Velletti",
+            "role": "Developer",
+            "homepage": "http://www.velletti.de/"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^12.4"
+    },
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Jvelletti\\JvTyposcript\\": "Classes"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "jv_typoscript"
+        }
+    }
+}

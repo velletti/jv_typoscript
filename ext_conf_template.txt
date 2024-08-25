@@ -1,0 +1,6 @@
+# General
+###########################
+# cat=General/enable/1; type=text; label=list of allowed extension  keys; description=add extension keys , comma separated.
+allowed = jv_typoscript
+
+
