@@ -1,8 +1,8 @@
 <?php
 
-namespace Jvelletti\JvTyposcript\Middleware;
+namespace JVelletti\JvTyposcript\Middleware;
 
-use Jvelletti\JvTyposcript\Utility\EmConfigurationUtility;
+use JVelletti\JvTyposcript\Utility\EmConfigurationUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

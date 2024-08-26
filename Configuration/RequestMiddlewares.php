@@ -1,6 +1,6 @@
 <?php
 
-use Jvelletti\JvTyposcript\Middleware\JvTyposcript;
+use JVelletti\JvTyposcript\Middleware\JvTyposcript;
 return [
     'frontend' => [
         'jvelletti/jv-typoscript/typoscript' => [

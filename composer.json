@@ -1,7 +1,7 @@
 {
     "name": "jvelletti/jv-typoscript",
     "type": "typo3-cms-extension",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Get Typscript from GIVEN Frontend request and answer as JSON. usefull in a cli command controller",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -24,7 +24,7 @@
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
-            "Jvelletti\\JvTyposcript\\": "Classes"
+            "JVelletti\\JvTyposcript\\": "Classes"
         }
     },
     "extra": {

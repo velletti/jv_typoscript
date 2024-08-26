@@ -1,6 +1,6 @@
 <?php
 
-namespace Jvelletti\JvTyposcript\Utility ;
+namespace JVelletti\JvTyposcript\Utility ;
 
 /**
  * This file is part of the TYPO3 CMS project.

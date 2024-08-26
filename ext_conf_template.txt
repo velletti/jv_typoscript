@@ -3,4 +3,7 @@
 # cat=General/enable/1; type=text; label=list of allowed extension  keys; description=add extension keys , comma separated.
 allowed = jv_typoscript
 
+# cat=General/enable/2; type=text; label=list of disallowed value keys; description=add value keys, comma separated. this  will have no out out
+
+disalowedKeys= googleApiKey
 
