@@ -1,2 +1,6 @@
-test = 1
-GoogleApiKey=12345678
+plugin {
+    tx_jvtyposcript {
+        test = 1
+        GoogleApiKey=12345678
+    }
+}
