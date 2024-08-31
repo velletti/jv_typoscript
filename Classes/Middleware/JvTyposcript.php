@@ -44,7 +44,7 @@ class JvTyposcript implements MiddlewareInterface
         $ts = $request->getAttribute('frontend.typoscript')->getSetupArray();
         if ( ! array_key_exists('plugin.' ,  $ts )) {
             echo "LINE: " .  __LINE__  ;
-            die (  ) ;
+            die() ;
             return ;
         }
 
