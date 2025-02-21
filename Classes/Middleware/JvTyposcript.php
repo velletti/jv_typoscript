@@ -39,12 +39,18 @@ class JvTyposcript implements MiddlewareInterface
         return $handler->handle($request);
     }
 
-    private function getTypoScript($request , $extKey)
+    private function getTypoScript($request , $extKey = "all")
     {
         $ts = $request->getAttribute('frontend.typoscript')->getSetupArray();
+
         if ( ! array_key_exists('plugin.' ,  $ts )) {
             return ;
         }
+        $configuration = EmConfigurationUtility::getEmConf();
+        if( !array_key_exists('allowed' , $configuration)) {
+            return ;
+        }
+        $configuration = GeneralUtility::trimExplode( "," ,$configuration['allowed']);
 
         if( $extKey == "all") {
             $ts = self::removeDotsFromTypoScriptArray($ts['plugin.']);
@@ -52,13 +58,11 @@ class JvTyposcript implements MiddlewareInterface
             if ( ! array_key_exists($extKey . '.' ,  $ts['plugin.'] )) {
                 return ;
             }
-            $ts = self::removeDotsFromTypoScriptArray($ts['plugin.'][$extKey . '.']);
+            $tempTs = self::removeDotsFromTypoScriptArray($ts['plugin.'][$extKey . '.']);
+            $ts = [] ;
+            $ts[$extKey] = $tempTs ;
         }
-        $configuration = EmConfigurationUtility::getEmConf();
-        if( !array_key_exists('allowed' , $configuration)) {
-            return ;
-        }
-        $configuration = GeneralUtility::trimExplode( "," ,$configuration['allowed']);
+
         $result =[] ;
         if ( is_array($configuration) && count($configuration) > 0 ) {
             foreach ( $ts as $extension => $value ) {
@@ -68,6 +72,9 @@ class JvTyposcript implements MiddlewareInterface
                     }
                 }
             }
+        }
+        if ( $extKey != "all") {
+            $result = $result[$extKey] ;
         }
 
         $jsonOutput = json_encode($result);
