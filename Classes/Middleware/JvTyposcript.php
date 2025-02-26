@@ -41,7 +41,12 @@ class JvTyposcript implements MiddlewareInterface
 
     private function getTypoScript($request , $extKey = "all")
     {
-        $ts = $request->getAttribute('frontend.typoscript')->getSetupArray();
+        $frontendTs = $request->getAttribute('frontend.typoscript');
+        if ( $frontendTs->hasSetup() ) {
+            $ts = $frontendTs->getSetupArray();
+        } else {
+            return ;
+        }
 
         if ( ! array_key_exists('plugin.' ,  $ts )) {
             return ;
