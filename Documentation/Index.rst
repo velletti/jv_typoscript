@@ -31,7 +31,7 @@ Eventmanagement
 		typoscript v12 typo3
 
 	:Copyright:
-		2024-
+		2025-
 
 	:Author:
 		Jörg Velletti
