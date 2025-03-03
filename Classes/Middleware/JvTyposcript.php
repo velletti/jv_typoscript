@@ -74,15 +74,16 @@ class JvTyposcript implements MiddlewareInterface
             return ;
         }
 
-        $configuration = GeneralUtility::trimExplode( "," ,$configuration['allowed']);
-        if( !is_array($configuration) || count($configuration) == 0 ) {
+        $allowedConf = GeneralUtility::trimExplode( "," ,$configuration['allowed'], true);
+        if( !is_array($allowedConf) || count($allowedConf) == 0 ) {
             return ;
         }
+        $disallowedConf = GeneralUtility::trimExplode( "," ,$configuration['disalowedKeys'], true);
         $result = [] ;
         foreach ( $ts['plugin'] as $extension => $value ) {
-            foreach ( $configuration as $allowed ) {
+            foreach ( $allowedConf as $allowed ) {
                 if ( strpos( $extension , $allowed ) > -1 ) {
-                    $result[$extension] = $value ;
+                    $result[$extension] = self::removeDisallowedFromValue( $value ,  $disallowedConf );
                 }
             }
         }
@@ -107,6 +108,29 @@ class JvTyposcript implements MiddlewareInterface
         echo $jsonOutput;
         die();
     }
+
+    private static function removeDisallowedFromValue(&$value , $disallowedArray) {
+        if ( count($disallowedArray) == 0 ) {
+            return $value ;
+        }
+        $result = [] ;
+        foreach ( $value as $key => $val ) {
+
+            foreach ($disallowedArray as $disallowed ) {
+                if ( strpos( strtolower($key) , strtolower($disallowed )) > -1 ) {
+                    continue 2 ;
+                }
+            }
+            if( is_array($val) ) {
+                $result[$key] = self::removeDisallowedFromValue($val , $disallowedArray);
+            } else {
+                $result[$key] = $val ;
+            }
+
+        }
+        return $result ;
+    }
+
     private static function convertFlatToArray(?array $flat ) {
         if (is_array($flat)) {
             $ts = [];
