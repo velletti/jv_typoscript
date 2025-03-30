@@ -45,7 +45,7 @@ cd vendor/jvelletti/jve-template \
 git archive -o "jve_typoscript_x.y.z.zip" HEAD
 
 f.e.: \
-git archive -o "jve_template_11.4.10.zip" HEAD
+git archive -o "jve_template_11.4.11.zip" HEAD
 
 
 Upload ZIP File to https://extensions.typo3.org/my-extensions \

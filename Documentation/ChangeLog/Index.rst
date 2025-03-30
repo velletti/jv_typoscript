@@ -10,6 +10,7 @@
 
 ChangeLog
 =========
+    version 11.4.11: fixing missing code in tag 11.4.10
     version 11.4.10: Finalize Feature  disallowedKeys working. If a key is in the disallowedKeys list or if one of disallowedKeys is partly in the key, the value is NOT returned.
                                  f.e. this as disallowedKeys: "auth,key,token" will not return values for: "authentication" or "token_url" or "apikey"
     version 11.4.9: Redirect request with no_cache=1 parameter to the same URL if the page is cached (cached Pages has not TYPO3 Frontend TypoScript setup in request)
