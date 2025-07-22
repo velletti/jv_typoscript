@@ -11,9 +11,17 @@ class TyposcriptUtility
         $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
         $uri = $uriBuilder->reset()
            ->setTargetPageUid($pid)
+
            ->setCreateAbsoluteUri(true)
            ->setArguments(['L' => $langId, 'tx_jvtyposcript' => $extension])
            ->buildFrontendUri();
+
+        if( isset( $GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth'])) {
+           $auth = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth'] ;
+           if ( is_array( $auth ) && count( $auth ) == 2 ) {
+                $uri = str_replace( '://' , '://' . $auth[0] . ':' . $auth[1] . '@' , $uri ) ;
+           }
+        }
 
         return $uri;
 
