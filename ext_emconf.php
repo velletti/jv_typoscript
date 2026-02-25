@@ -7,10 +7,10 @@ $EM_CONF['jv_typoscript'] = [
     'author' => 'Joerg Velletti',
     'author_email' => 'typo3@velletti.de',
     'state' => 'beta',
-    'version' => '11.4.11',
+    'version' => '13.4.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '11.5.1-12.4.99',
+            'typo3' => '13.4.1-13.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],
