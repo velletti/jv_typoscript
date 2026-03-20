@@ -2,19 +2,19 @@
 
 namespace JVelletti\JvTyposcript\Utility;
 
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
+use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 class TyposcriptUtility
 {
-    public static function getPath($pid , $langId , $extension )
+    public static function getPath($pid , $langId , $extension  )
     {
-        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
-        $uri = $uriBuilder->reset()
-           ->setTargetPageUid($pid)
-
-           ->setCreateAbsoluteUri(true)
-           ->setArguments(['L' => $langId, 'tx_jvtyposcript' => $extension])
-           ->buildFrontendUri();
+        $site = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Site\SiteFinder::class)->getSiteByPageId($pid);
+        $uri = $site->getRouter()->generateUri( $pid , ['tx_jvtyposcript' => $extension , 'L' => $langId , 'no_cache' => 1 ] , '', '' ) ;
 
         if( isset( $GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth'])) {
            $auth = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth'] ;
@@ -26,6 +26,7 @@ class TyposcriptUtility
         return $uri;
 
     }
+
     public static function loadTypoScriptviaCurl($path )
     {
         $url = trim((string) $path) ;
